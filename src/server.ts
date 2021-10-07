@@ -1,6 +1,6 @@
 const express = require('express');
 
-import routes from "./routes";
+const routes = require("./routes");
 
 // Importante importar as informações da pasta database
 import "./database"

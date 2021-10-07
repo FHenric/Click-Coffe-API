@@ -32,4 +32,4 @@ routes.put('/catalogo/produtos/:id', CatalogoController.update)
 routes.delete('/catalogo/produtos/:id', CatalogoController.deleteProduto)
 
 
-export default routes;
+module.exports = routes;
