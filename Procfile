@@ -1,1 +1,1 @@
-web start
+web src/server.ts
