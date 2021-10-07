@@ -1,9 +1,9 @@
 import express from "express";
 
-import routes from "./routes";
+import routes from "./src/routes";
 
 // Importante importar as informações da pasta database
-import "./database"
+import "./src/database"
 
 const app = express();
 
