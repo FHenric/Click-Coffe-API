@@ -14,4 +14,4 @@ var app = (0, express_1.default)();
 app.use(express_1.default.json());
 // Utiliza o arquivo routes como forma de pegar os endpoints para serem utilizados
 app.use(routes_1.default);
-app.listen(3000, function () { return console.log("Servidor inicializado"); });
+app.listen(process.env.PORT || 3000, function () { return console.log("Servidor inicializado"); });
