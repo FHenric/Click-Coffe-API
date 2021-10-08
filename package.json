@@ -6,7 +6,7 @@
   "author": "Filipe Henrique",
   "license": "MIT",
   "scripts": {
-    "start": "node server.ts",
+    "start": "node dist/server.js",
     "build-ts": "tsc --build",
     "clear-ts": "tsc --build --clean",
     "dev": "ts-node-dev src/server.ts",
