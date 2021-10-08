@@ -8,6 +8,9 @@ import { CategoriaRepository } from "../repositories/CategoriaRepository";
 import { ProdutoRepository } from "../repositories/ProdutoRepository";
 
 export default {
+    async show(req: Request, res: Response){
+        return res.status(200).json({message: 'Okay'});
+    },
     async create(req: Request, res: Response) {
         const {catNome, qtdProdutos} = req.body;
 

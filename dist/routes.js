@@ -8,6 +8,8 @@ var express_1 = require("express");
 var CatalogoController_1 = __importDefault(require("./Controllers/CatalogoController"));
 var routes = (0, express_1.Router)();
 // ------------[CATALOGO]------------
+//teste de pagina inicial
+routes.get('/', CatalogoController_1.default.show);
 //Criar categorias
 routes.post('/catalogo', CatalogoController_1.default.create);
 // Listar categorias

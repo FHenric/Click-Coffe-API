@@ -41,6 +41,13 @@ var Produto_1 = require("../entities/Produto");
 var CategoriaRepository_1 = require("../repositories/CategoriaRepository");
 var ProdutoRepository_1 = require("../repositories/ProdutoRepository");
 exports.default = {
+    show: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, res.status(200).json({ message: 'Okay' })];
+            });
+        });
+    },
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, catNome, qtdProdutos, repository, data;

@@ -7,6 +7,9 @@ const routes = Router();
 
 // ------------[CATALOGO]------------
 
+//teste de pagina inicial
+routes.get('/', CatalogoController.show)
+
 //Criar categorias
 routes.post('/catalogo', CatalogoController.create)
 
