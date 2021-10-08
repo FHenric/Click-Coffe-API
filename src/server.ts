@@ -16,5 +16,5 @@ app.use(express.json())
 // Utiliza o arquivo routes como forma de pegar os endpoints para serem utilizados
 app.use(routes);
 
-app.listen(3000,()=>console.log("Servidor inicializado"))
+app.listen(process.env.PORT || 3000,()=>console.log("Servidor inicializado"))
 
