@@ -1,5 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 import { Categoria } from "./Categoria";
+import { TorraTipo } from "./TorraTipo";
 
 
 @Entity("tab_produto")
@@ -10,11 +11,11 @@ export class Produto extends BaseEntity{
     @Column({name: "nome"})
     nome: string;
 
-    @Column({name: "valor_unit"})
-    valorUnitario: number;
+    @Column({name: "url_img"})
+    imagem: string;
 
-    @Column({name: "marca"})
-    marca: string;
+    @Column({name: "tipo_torra"})
+    torra: string;
 
     @ManyToOne(()=> Categoria, categoria => categoria.produtos )
     @JoinColumn({name: "id_categoria"})

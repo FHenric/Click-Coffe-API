@@ -50,16 +50,16 @@ exports.default = {
     },
     create: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, catNome, qtdProdutos, repository, data;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var catNome, repository, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        _a = req.body, catNome = _a.catNome, qtdProdutos = _a.qtdProdutos;
+                        catNome = req.body.catNome;
                         repository = (0, typeorm_1.getCustomRepository)(CategoriaRepository_1.CategoriaRepository);
-                        data = { catNome: catNome, qtdProdutos: qtdProdutos };
+                        data = { catNome: catNome };
                         return [4 /*yield*/, repository.save(data)];
                     case 1:
-                        data = _b.sent();
+                        data = _a.sent();
                         return [2 /*return*/, res.status(201).json({ categoria: data })];
                 }
             });
@@ -82,20 +82,19 @@ exports.default = {
     },
     addProduto: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, nome, valorUnitario, marca, repository, idCategoria, produto;
+            var id, _a, nome, imagem, repository, idCategoria, produto;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         id = req.params.id;
-                        _a = req.body, nome = _a.nome, valorUnitario = _a.valorUnitario, marca = _a.marca;
+                        _a = req.body, nome = _a.nome, imagem = _a.imagem;
                         repository = (0, typeorm_1.getCustomRepository)(CategoriaRepository_1.CategoriaRepository);
                         return [4 /*yield*/, repository.findOne(id)];
                     case 1:
                         idCategoria = _b.sent();
                         produto = new Produto_1.Produto();
                         produto.nome = nome;
-                        produto.valorUnitario = valorUnitario;
-                        produto.marca = marca;
+                        produto.imagem = imagem;
                         produto.idCategoria = idCategoria;
                         idCategoria.produtos.push(produto);
                         return [4 /*yield*/, repository.save(idCategoria)];

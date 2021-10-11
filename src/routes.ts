@@ -1,10 +1,15 @@
 import { Router } from 'express';
+import multer from 'multer'
 
 //Controllers
 import CatalogoController from './Controllers/CatalogoController';
 
+//Config
+import storage from './config/multer';
+
 const routes = Router();
 
+const upload = multer({storage: storage});
 // ------------[CATALOGO]------------
 
 //teste de pagina inicial
@@ -17,7 +22,7 @@ routes.post('/catalogo', CatalogoController.create)
 routes.get('/catalogo', CatalogoController.listCategoria)
 
 //Criar produto
-routes.post('/catalogo/:id/produtos', CatalogoController.addProduto)
+routes.post('/catalogo/:id/produtos', upload, CatalogoController.addProduto)
 
 //Listar Produtos
 routes.get('/catalogo/produtos', CatalogoController.list)

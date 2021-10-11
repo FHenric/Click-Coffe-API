@@ -41,13 +41,13 @@ var Produto = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], Produto.prototype, "nome", void 0);
     __decorate([
-        (0, typeorm_1.Column)({ name: "valor_unit" }),
-        __metadata("design:type", Number)
-    ], Produto.prototype, "valorUnitario", void 0);
-    __decorate([
-        (0, typeorm_1.Column)({ name: "marca" }),
+        (0, typeorm_1.Column)({ name: "url_img" }),
         __metadata("design:type", String)
-    ], Produto.prototype, "marca", void 0);
+    ], Produto.prototype, "imagem", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ name: "tipo_torra" }),
+        __metadata("design:type", String)
+    ], Produto.prototype, "torra", void 0);
     __decorate([
         (0, typeorm_1.ManyToOne)(function () { return Categoria_1.Categoria; }, function (categoria) { return categoria.produtos; }),
         (0, typeorm_1.JoinColumn)({ name: "id_categoria" }),

@@ -12,11 +12,11 @@ export default {
         return res.status(200).json({message: 'Okay'});
     },
     async create(req: Request, res: Response) {
-        const {catNome, qtdProdutos} = req.body;
+        const {catNome} = req.body;
 
         const repository = getCustomRepository(CategoriaRepository);
 
-        var data = {catNome, qtdProdutos}
+        var data = {catNome}
 
         data = await repository.save(data)
 
@@ -33,15 +33,14 @@ export default {
 
     async addProduto(req: Request, res: Response){
         const {id} = req.params;
-        const {nome, valorUnitario, marca} = req.body;
+        const {nome, imagem} = req.body;
 
         const repository = getCustomRepository(CategoriaRepository);
         const idCategoria = await repository.findOne(id);
 
         const produto = new Produto();
         produto.nome = nome;
-        produto.valorUnitario = valorUnitario;
-        produto.marca = marca;
+        produto.imagem = imagem;
         produto.idCategoria = idCategoria;
         
         idCategoria.produtos.push(produto);

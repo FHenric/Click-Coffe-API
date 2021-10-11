@@ -41,10 +41,6 @@ var Categoria = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], Categoria.prototype, "catNome", void 0);
     __decorate([
-        (0, typeorm_1.Column)({ name: "qtd_produtos" }),
-        __metadata("design:type", Number)
-    ], Categoria.prototype, "qtdProdutos", void 0);
-    __decorate([
         (0, typeorm_1.OneToMany)(function () { return Produto_1.Produto; }, function (prod) { return prod.idCategoria; }, { cascade: true, eager: true }),
         __metadata("design:type", Array)
     ], Categoria.prototype, "produtos", void 0);
