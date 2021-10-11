@@ -21,6 +21,9 @@ routes.post('/catalogo', CatalogoController.create)
 // Listar categorias
 routes.get('/catalogo', CatalogoController.listCategoria)
 
+// Apagar Categoria
+routes.get('/catalogo/:id', CatalogoController.delCat)
+
 //Criar produto
 routes.post('/catalogo/:id/produtos', CatalogoController.addProduto)
 

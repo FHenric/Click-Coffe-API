@@ -31,6 +31,15 @@ export default {
         return res.status(200).json({data:data});
     },
 
+    async delCat(req: Request, res: Response) {
+        const {id} = req.params;
+        const repository = getCustomRepository(CategoriaRepository);
+
+        await repository.delete(id);
+
+        return res.status(200).json({message: `Categoria excluída com sucesso!`})
+    },
+
     async addProduto(req: Request, res: Response){
         const {id} = req.params;
         const {nome, imagem} = req.body;

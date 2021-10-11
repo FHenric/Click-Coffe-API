@@ -80,6 +80,22 @@ exports.default = {
             });
         });
     },
+    delCat: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, repository;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = req.params.id;
+                        repository = (0, typeorm_1.getCustomRepository)(CategoriaRepository_1.CategoriaRepository);
+                        return [4 /*yield*/, repository.delete(id)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, res.status(200).json({ message: "Categoria exclu\u00EDda com sucesso!" })];
+                }
+            });
+        });
+    },
     addProduto: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var id, _a, nome, imagem, repository, idCategoria, produto;
