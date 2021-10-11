@@ -19,7 +19,7 @@ routes.post('/catalogo', CatalogoController_1.default.create);
 // Listar categorias
 routes.get('/catalogo', CatalogoController_1.default.listCategoria);
 //Criar produto
-routes.post('/catalogo/:id/produtos', upload, CatalogoController_1.default.addProduto);
+routes.post('/catalogo/:id/produtos', CatalogoController_1.default.addProduto);
 //Listar Produtos
 routes.get('/catalogo/produtos', CatalogoController_1.default.list);
 //Listar produtos por categoria
