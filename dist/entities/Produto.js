@@ -45,7 +45,7 @@ var Produto = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], Produto.prototype, "imagem", void 0);
     __decorate([
-        (0, typeorm_1.Column)({ name: "tipo_torra" }),
+        (0, typeorm_1.Column)({ name: "torra" }),
         __metadata("design:type", String)
     ], Produto.prototype, "torra", void 0);
     __decorate([
