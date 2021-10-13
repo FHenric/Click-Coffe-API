@@ -7,7 +7,7 @@ var multer_1 = __importDefault(require("multer"));
 var path_1 = require("path");
 exports.default = {
     storage: multer_1.default.diskStorage({
-        destination: (0, path_1.resolve)(__dirname, '..', 'uploads'),
+        destination: (0, path_1.resolve)(__dirname, '..', '..', 'dist', 'uploads'),
         filename: function (req, file, cb) {
             cb(null, file.originalname);
         }
