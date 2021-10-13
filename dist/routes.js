@@ -10,7 +10,7 @@ var path_1 = require("path");
 var CatalogoController_1 = __importDefault(require("./Controllers/CatalogoController"));
 //Config
 var storage = multer_1.default.diskStorage({
-    destination: (0, path_1.resolve)(__dirname, '..', '..', '..', 'tmp', 'uploads'),
+    destination: (0, path_1.resolve)(__dirname, '..', '..', '..', 'uploads'),
     filename: function (req, file, cb) {
         cb(null, new Date().toISOString() + file.originalname);
     },
