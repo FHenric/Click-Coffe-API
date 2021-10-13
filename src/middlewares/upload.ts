@@ -1,14 +1,24 @@
 import multer from 'multer';
+import {resolve} from 'path';
 
-const upload = multer({
+export default {
     storage: multer.diskStorage({
-        destination:(req, file, cb) => {
-            cb(null,  './dist/uploads')
-        },
+        destination: resolve(__dirname, '..', 'uploads' ),
         filename: (req, file, cb) => {
-            cb( null, file.originalname)
+            cb(null, file.originalname)
         }
     })
-}) 
+}
 
-    export default upload
+// const upload = multer({
+//     storage: multer.diskStorage({
+//         destination:(req, file, cb) => {
+//             cb(null,  './dist/uploads')
+//         },
+//         filename: (req, file, cb) => {
+//             cb( null, file.originalname)
+//         }
+//     })
+// }) 
+
+//     export default upload

@@ -4,8 +4,7 @@ import multer from 'multer';
 //Controllers
 import CatalogoController from './Controllers/CatalogoController';
 
-//Config
-import storage from './middlewares/upload';
+import multerConfig from './middlewares/upload';
 
 
 
@@ -24,6 +23,9 @@ import storage from './middlewares/upload';
 
 const routes = Router();
 
+//Config
+const upload = multer(multerConfig)
+
 // ------------[CATALOGO]------------
 
 //teste de pagina inicial
@@ -39,7 +41,7 @@ routes.get('/catalogo', CatalogoController.listCategoria)
 routes.delete('/catalogo/:id', CatalogoController.delCat)
 
 //Criar produto
-routes.post('/catalogo/:id/produtos', storage.single('image'), CatalogoController.addProduto)
+routes.post('/catalogo/:id/produtos', upload.single('image'), CatalogoController.addProduto)
 
 //Listar Produtos
 routes.get('/catalogo/produtos', CatalogoController.list)
