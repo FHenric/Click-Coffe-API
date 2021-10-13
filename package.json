@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/server.js",
-    "build-ts": "tsc --build",
-    "clear-ts": "tsc --build --clean",
+    "build": "tsc --build",
+    "clear": "tsc --build --clean",
     "dev": "ts-node-dev src/server.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
   },
