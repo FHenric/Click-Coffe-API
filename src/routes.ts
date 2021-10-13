@@ -33,7 +33,7 @@ routes.get('/catalogo', CatalogoController.listCategoria)
 routes.delete('/catalogo/:id', CatalogoController.delCat)
 
 //Criar produto
-routes.post('/catalogo/:id/produtos', upload('produto_imagem'), CatalogoController.addProduto)
+routes.post('/catalogo/:id/produtos', upload.single('produto_imagem'), CatalogoController.addProduto)
 
 //Listar Produtos
 routes.get('/catalogo/produtos', CatalogoController.list)

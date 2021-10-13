@@ -27,7 +27,7 @@ routes.get('/catalogo', CatalogoController_1.default.listCategoria);
 // Apagar Categoria
 routes.delete('/catalogo/:id', CatalogoController_1.default.delCat);
 //Criar produto
-routes.post('/catalogo/:id/produtos', upload('produto_imagem'), CatalogoController_1.default.addProduto);
+routes.post('/catalogo/:id/produtos', upload.single('produto_imagem'), CatalogoController_1.default.addProduto);
 //Listar Produtos
 routes.get('/catalogo/produtos', CatalogoController_1.default.list);
 //Listar produtos por categoria
