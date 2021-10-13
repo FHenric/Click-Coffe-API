@@ -5,12 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var multer_1 = __importDefault(require("multer"));
-var path_1 = require("path");
 //Controllers
 var CatalogoController_1 = __importDefault(require("./Controllers/CatalogoController"));
 //Config
 var storage = multer_1.default.diskStorage({
-    destination: (0, path_1.resolve)(__dirname, 'uploads'),
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
     filename: function (req, file, cb) {
         cb(null, new Date().toISOString() + file.originalname);
     },

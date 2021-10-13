@@ -7,7 +7,9 @@ import CatalogoController from './Controllers/CatalogoController';
 
 //Config
 const storage = multer.diskStorage({
-    destination: resolve(__dirname, 'uploads'),
+    destination: function (req, file, cb) {
+        cb(null, './uploads/')
+    },
     filename: (req, file, cb) => {
         cb(null, new Date().toISOString() + file.originalname);
     },
