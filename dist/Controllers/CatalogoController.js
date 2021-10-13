@@ -98,12 +98,12 @@ exports.default = {
     },
     addProduto: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, nome, imagem, repository, idCategoria, produto;
+            var id, _a, nome, desc, imagem, repository, idCategoria, produto;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         id = req.params.id;
-                        _a = req.body, nome = _a.nome, imagem = _a.imagem;
+                        _a = req.body, nome = _a.nome, desc = _a.desc, imagem = _a.imagem;
                         repository = (0, typeorm_1.getCustomRepository)(CategoriaRepository_1.CategoriaRepository);
                         return [4 /*yield*/, repository.findOne(id)];
                     case 1:
@@ -111,6 +111,7 @@ exports.default = {
                         produto = new Produto_1.Produto();
                         produto.nome = nome;
                         produto.imagem = imagem;
+                        produto.desc = desc;
                         produto.idCategoria = idCategoria;
                         idCategoria.produtos.push(produto);
                         return [4 /*yield*/, repository.save(idCategoria)];

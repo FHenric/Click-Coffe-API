@@ -1,15 +1,23 @@
 import { Router } from 'express';
-import multer from 'multer'
+import multer from 'multer';
+import { resolve } from 'path';
 
 //Controllers
 import CatalogoController from './Controllers/CatalogoController';
 
 //Config
-//import storage from './config/multer';
+const storage = multer.diskStorage({
+    destination: resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'),
+    filename: (req, file, cb) => {
+        cb(null, new Date().toISOString() + file.originalname);
+    },
+})
+
+const upload = multer({ storage: storage});
+
 
 const routes = Router();
 
-//const upload = multer({storage: storage});
 // ------------[CATALOGO]------------
 
 //teste de pagina inicial
@@ -25,7 +33,7 @@ routes.get('/catalogo', CatalogoController.listCategoria)
 routes.delete('/catalogo/:id', CatalogoController.delCat)
 
 //Criar produto
-routes.post('/catalogo/:id/produtos', CatalogoController.addProduto)
+routes.post('/catalogo/:id/produtos', upload('produto_imagem'), CatalogoController.addProduto)
 
 //Listar Produtos
 routes.get('/catalogo/produtos', CatalogoController.list)

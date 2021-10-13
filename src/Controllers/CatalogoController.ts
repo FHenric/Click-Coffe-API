@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { getConnection, getCustomRepository } from "typeorm";
+import {resolve} from 'path';
+import multer from "multer";
 
 import { Categoria } from "../entities/Categoria";
 import { Produto } from "../entities/Produto";
@@ -42,7 +44,14 @@ export default {
 
     async addProduto(req: Request, res: Response){
         const {id} = req.params;
-        const {nome, imagem} = req.body;
+        const {nome, desc, imagem} = req.body;
+
+        // const foto = multer.diskStorage({
+        //     destination: resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'),
+        //     filename: (req, file, cb) => {
+        //         cb(null, new Date().toISOString() + file.originalname);
+        //     },
+        // })
 
         const repository = getCustomRepository(CategoriaRepository);
         const idCategoria = await repository.findOne(id);
@@ -50,6 +59,7 @@ export default {
         const produto = new Produto();
         produto.nome = nome;
         produto.imagem = imagem;
+        produto.desc = desc
         produto.idCategoria = idCategoria;
         
         idCategoria.produtos.push(produto);

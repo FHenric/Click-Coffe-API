@@ -13,6 +13,9 @@ export class Produto extends BaseEntity{
     @Column({name: "url_img"})
     imagem: string;
 
+    @Column({name: "descricao"})
+    desc: string;
+
     @ManyToOne(()=> Categoria, categoria => categoria.produtos )
     @JoinColumn({name: "id_categoria"})
     idCategoria: Categoria;

@@ -4,12 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
+var multer_1 = __importDefault(require("multer"));
+var path_1 = require("path");
 //Controllers
 var CatalogoController_1 = __importDefault(require("./Controllers/CatalogoController"));
 //Config
-//import storage from './config/multer';
+var storage = multer_1.default.diskStorage({
+    destination: (0, path_1.resolve)(__dirname, '..', '..', '..', 'tmp', 'uploads'),
+    filename: function (req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    },
+});
+var upload = (0, multer_1.default)({ storage: storage });
 var routes = (0, express_1.Router)();
-//const upload = multer({storage: storage});
 // ------------[CATALOGO]------------
 //teste de pagina inicial
 routes.get('/', CatalogoController_1.default.show);
@@ -20,7 +27,7 @@ routes.get('/catalogo', CatalogoController_1.default.listCategoria);
 // Apagar Categoria
 routes.delete('/catalogo/:id', CatalogoController_1.default.delCat);
 //Criar produto
-routes.post('/catalogo/:id/produtos', CatalogoController_1.default.addProduto);
+routes.post('/catalogo/:id/produtos', upload('produto_imagem'), CatalogoController_1.default.addProduto);
 //Listar Produtos
 routes.get('/catalogo/produtos', CatalogoController_1.default.list);
 //Listar produtos por categoria
