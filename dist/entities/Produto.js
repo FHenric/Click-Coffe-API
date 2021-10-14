@@ -49,6 +49,10 @@ var Produto = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], Produto.prototype, "desc", void 0);
     __decorate([
+        (0, typeorm_1.Column)({ name: "opcao_grao" }),
+        __metadata("design:type", String)
+    ], Produto.prototype, "torra", void 0);
+    __decorate([
         (0, typeorm_1.ManyToOne)(function () { return Categoria_1.Categoria; }, function (categoria) { return categoria.produtos; }),
         (0, typeorm_1.JoinColumn)({ name: "id_categoria" }),
         __metadata("design:type", Categoria_1.Categoria)

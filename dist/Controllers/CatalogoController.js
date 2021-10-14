@@ -98,18 +98,19 @@ exports.default = {
     },
     addProduto: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, nome, desc, imagem, repository, idCategoria, produto;
+            var id, _a, nome, desc, torra, imagem, repository, idCategoria, produto;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         id = req.params.id;
-                        _a = req.body, nome = _a.nome, desc = _a.desc, imagem = _a.imagem;
+                        _a = req.body, nome = _a.nome, desc = _a.desc, torra = _a.torra, imagem = _a.imagem;
                         repository = (0, typeorm_1.getCustomRepository)(CategoriaRepository_1.CategoriaRepository);
                         return [4 /*yield*/, repository.findOne(id)];
                     case 1:
                         idCategoria = _b.sent();
                         produto = new Produto_1.Produto();
                         produto.nome = nome;
+                        produto.torra = torra;
                         produto.imagem = imagem;
                         produto.desc = desc;
                         produto.idCategoria = idCategoria;
@@ -204,5 +205,3 @@ exports.default = {
         });
     }
 };
-//.createQueryBuilder("produto").innerJoin("produto.categoria", "categoria")
-//.where("categoria.catNome = :categoria", {categoria:catNome})

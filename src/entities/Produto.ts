@@ -16,6 +16,9 @@ export class Produto extends BaseEntity{
     @Column({name: "descricao"})
     desc: string;
 
+    @Column({name: "opcao_grao"})
+    torra: string;
+
     @ManyToOne(()=> Categoria, categoria => categoria.produtos )
     @JoinColumn({name: "id_categoria"})
     idCategoria: Categoria;

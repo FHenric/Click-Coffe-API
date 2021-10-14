@@ -1,9 +1,6 @@
 import { Request, Response } from "express";
-import { getConnection, getCustomRepository } from "typeorm";
-import {resolve} from 'path';
-import multer from "multer";
+import { getCustomRepository } from "typeorm";
 
-import { Categoria } from "../entities/Categoria";
 import { Produto } from "../entities/Produto";
 
 import { CategoriaRepository } from "../repositories/CategoriaRepository";
@@ -44,22 +41,16 @@ export default {
 
     async addProduto(req: Request, res: Response){
         const {id} = req.params;
-        const {nome, desc, imagem} = req.body;
-
-        // const foto = multer.diskStorage({
-        //     destination: resolve(__dirname, '..', '..', '..', 'tmp', 'uploads'),
-        //     filename: (req, file, cb) => {
-        //         cb(null, new Date().toISOString() + file.originalname);
-        //     },
-        // })
+        const {nome, desc, torra, imagem} = req.body;
 
         const repository = getCustomRepository(CategoriaRepository);
         const idCategoria = await repository.findOne(id);
 
         const produto = new Produto();
         produto.nome = nome;
+        produto.torra = torra;
         produto.imagem = imagem;
-        produto.desc = desc
+        produto.desc = desc;
         produto.idCategoria = idCategoria;
         
         idCategoria.produtos.push(produto);
@@ -117,6 +108,3 @@ export default {
         return res.status(200).json({message: `Produto excluído com sucesso!`})
     }
 }
-
-//.createQueryBuilder("produto").innerJoin("produto.categoria", "categoria")
-//.where("categoria.catNome = :categoria", {categoria:catNome})
